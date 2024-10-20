@@ -1,0 +1,25 @@
+from turtle import Turtle
+
+class Paddle:
+    def __init__(self, player_position) -> None:
+        self.player = Turtle(shape = 'square')
+        self.player_position = player_position
+        self.create_paddle()
+
+    def create_paddle(self):
+        self.player.speed(0)
+        self.player.setheading(90)
+        self.player.resizemode("user")
+        self.player.shapesize(1,3,1)
+        self.player.color('white')
+        self.player.penup()
+        self.player.goto(self.player_position)
+
+    def move_up(self):
+        if(self.player.ycor()<280):
+            self.player.forward(20)
+
+    def move_down(self):
+        if(self.player.ycor()>-280):
+            self.player.backward(20)
+
