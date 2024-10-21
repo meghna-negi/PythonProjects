@@ -12,7 +12,7 @@ class Scoreboard(Turtle):
         self.score = 0
         self.display_score()
     
-    def display_score(self):
+    def display_score(self) -> None:
         self.clear()
         self.hideturtle()
         self.color('white')
@@ -20,7 +20,7 @@ class Scoreboard(Turtle):
         self.goto(self.scoreboard_pos)
         self.write(f"{self.score}",align=ALIGNMENT,font=FONT)
         
-    def final_score(self, player):
+    def final_score(self, player) -> None:
         self.goto(0,0)
         self.write(f"{player} won",align=ALIGNMENT,font=FONT)
 

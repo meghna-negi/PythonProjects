@@ -7,7 +7,7 @@ class Paddle:
         self.player_position = player_position
         self.create_paddle()
 
-    def create_paddle(self):
+    def create_paddle(self) -> None:
         self.player.speed(6)
         self.player.setheading(90)
         self.player.resizemode("user")
@@ -16,10 +16,10 @@ class Paddle:
         self.player.penup()
         self.player.goto(self.player_position)
 
-    def move_up(self):
+    def move_up(self) -> None:
         if(self.player.ycor()<280):
             self.player.forward(20)
 
-    def move_down(self):
+    def move_down(self) -> None:
         if(self.player.ycor()>-280):
             self.player.backward(20)
