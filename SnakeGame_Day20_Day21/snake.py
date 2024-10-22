@@ -27,6 +27,15 @@ class Snake:
     def extend_snake(self) -> None:
         self.add_square(self.snake_body[-1].position())   
     
+    #Function to move the current snake out of screen when colliding with wall or tail
+    #Creates the new Snake at the middle of the screen
+    def reset_snake(self) -> None:
+        for snake in self.snake_body:
+            snake.goto(1000,1000)
+        self.snake_body.clear()
+        self.create_snake()
+        self.head = self.snake_body[0]
+
     #Function to make snake move forward in the current direction
     def move_snake(self) -> None:
         for square in range(len(self.snake_body)-1,0,-1):

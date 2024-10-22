@@ -7,7 +7,6 @@ from scoreboard import Scoreboard
 #Creating Screen object
 screen = Screen()
 
-
 def main() -> None:
 
     #Setting the flag to continue the movement of snake
@@ -44,20 +43,20 @@ def main() -> None:
         if(snake.head.distance(food)<=15):
             food.new_food()
             snake.extend_snake()
+            scoreboard.score += 1
             scoreboard.display_score()
         
-        #Setting the flag to false in case snake collides with screen boundaries
+        #Resetting game and snake in case snake collides with screen boundaries
         if(snake.head.xcor()>= 280 or snake.head.xcor()<=-280 or snake.head.ycor()>= 280 or snake.head.ycor()<=-280):
-            game_on = False
+            scoreboard.reset_game()
+            snake.reset_snake()
 
-        #Setting the flag to false in case snake collides with its own body
+        #Resetting game and snake in case snake collides with its own body
         for square in snake.snake_body[1:]:
             if(snake.head.distance(square) < 10):
-                game_on = False
+                scoreboard.reset_game()
+                snake.reset_snake()
 
-        #When Flag is set to false, game over is displayed on the screen
-        if(not game_on):
-           scoreboard.display_game_over()
 
     screen.exitonclick()
     
