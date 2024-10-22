@@ -57,14 +57,10 @@ def main() -> None:
                 player.write("Game Over",align=ALIGNMENT,font=FONT)
 
             #To check if players crosses the level and starts next difficulty level
-            if(player.ycor()>290 and level <= 1):
+            if(player.ycor()>290):
                 speed += 5
                 player.goto(0,-280)
                 level += 1
-            elif(player.ycor()>290 and level == 2):
-                game_on = False
-                player.goto(0,0)
-                player.write("You won!!!",align=ALIGNMENT,font=FONT)
 
     screen.exitonclick()
 
