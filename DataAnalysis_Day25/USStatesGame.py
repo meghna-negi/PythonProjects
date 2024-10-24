@@ -20,9 +20,8 @@ def main() -> None:
     states = pd.read_csv("50_states.csv")
     state_list = states['state'].to_list()
 
-    #Lists to keep track of correctly guessed and missed states
+    #Lists to keep track of correctly guessed states
     guessed_list = []
-    missing_list = []
 
     #Game will run until all states are guessed or user types exit as an input
     while(state_count < 50):
@@ -31,9 +30,7 @@ def main() -> None:
         #Checking if user gave exit as input
         if(user_input.title() == 'Exit'):
             #Creating the list for all the missed states
-            for state in state_list:
-                if(state not in guessed_list):
-                    missing_list.append(state)
+            missing_list =[state for state in state_list if state not in guessed_list]
 
             #Writing the list to the csv and exiting the game
             csv_data = pd.DataFrame(missing_list,columns=['missing states'])
