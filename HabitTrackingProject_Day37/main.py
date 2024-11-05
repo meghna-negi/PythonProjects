@@ -52,7 +52,7 @@ post_graph_endpoint =  f"{pixela_endpoint}/{USERNAME}/graphs/graph1"
 today = dt.datetime.now()
 todays_data = {
     "date": today.strftime("%Y%m%d"),
-    "quantity": "200"
+    "quantity": input("How much did you code?")
 }
 
 #Post operation to the API to write the today's data on to the pixel
