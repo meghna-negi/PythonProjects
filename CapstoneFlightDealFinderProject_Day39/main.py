@@ -1,15 +1,17 @@
-#This file will need to use the DataManager,FlightSearch, FlightData, NotificationManager classes to achieve the program requirements.
+
 from data_manager import DataManager
 from flight_search import FlightSearch
-import datetime as dt
 
 def main()->None:
     data = DataManager()
-    today = dt.datetime.now().strftime("%Y-%m-%d")
-    cities = data.get_codeList()
-    for city in cities:
-        flight_search = FlightSearch(city,today)
-        print(flight_search.get_data())
+    sheet_data = data.get_data()
+    print(sheet_data)
+
+    for flight in sheet_data:
+        if(flight['iataCode'] == ''):
+            flight_search = FlightSearch(flight['city'])
+            code = flight_search.set_code()
+            data.set_code(code,flight['id'])
 
 if __name__ == "__main__":
     main()
