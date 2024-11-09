@@ -15,7 +15,14 @@ class FlightSearch:
         }
     
     def set_code(self):
-        response = requests.get(url=AMADEUS_ENDPOINT,headers=HEADERS,params=self.citySearch_param)
-        code = response.json()["data"][0]["iataCode"]
-        return(code)
+        try:
+            response = requests.get(url=AMADEUS_ENDPOINT,headers=HEADERS,params=self.citySearch_param)
+            code = response.json()["data"][0]["iataCode"]
+            
+        except:
+            print("No data available for this city")
+            code = "N/A"
+
+        finally:
+            return(code)
         
