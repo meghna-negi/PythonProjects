@@ -20,7 +20,7 @@ upgrades = driver.find_elements(by=By.CSS_SELECTOR, value="#store div")
 upgrades_id = [item.get_attribute("id") for item in upgrades]
 
 #Setting timeout for checking upgrades and to display the cookie per sec
-timeout = time.time() + 30
+timeout = time.time() + 5
 checktime = time.time() + 60*5
 
 #Loop to run the code
