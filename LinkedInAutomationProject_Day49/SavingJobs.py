@@ -26,6 +26,25 @@ time.sleep(15)
 jobs_button = driver.find_element(By.XPATH,value='//*[@id="global-nav"]/div/nav/ul/li[3]/a')
 print(jobs_button)
 jobs_button.send_keys(Keys.ENTER)
-job_desc = driver.find_element(By.CSS_SELECTOR,value='#jobs-search-box-keyword-id-ember200')
+time.sleep(5)
+job_desc = driver.find_element(By.CLASS_NAME,value='jobs-search-global-typeahead__input')
 job_desc.send_keys('Python Developer',Keys.ENTER)
+time.sleep(5)
+
+#Setting the easy apply filter
+easy_apply = driver.find_element(By.CSS_SELECTOR,value='.search-reusables__filter-binary-toggle button').click()
+time.sleep(2)
+
+#Getting the list of job listings for the entered position with easy apply filter
+job_lists = driver.find_elements(By.CSS_SELECTOR,value='.job-card-container--clickable')
+print(len(job_lists))
+
+#Going through each listing and saving it
+for job in job_lists:
+    job.click()
+    time.sleep(2)
+    save_button = driver.find_element(By.CSS_SELECTOR,value=".jobs-save-button")
+    save_button.click()
+    time.sleep(30)
+
 
