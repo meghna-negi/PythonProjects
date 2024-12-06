@@ -39,15 +39,13 @@ def home():
 def add_cafe():
     form = CafeForm()
     if form.validate_on_submit():
-        #new_row = (form.cafe.data,form.locURL.data,form.openTime.data,form.closeTime.data,form.coffeeRating.data,form.wifiRating.data,form.powerRating.data'
-        #print(new_row)
-        #with open('cafe-data.csv',mode='a') as file:
-        #    file.write(new_row)
-        print(True)
+        new_row = f'{form.cafe.data},{form.locURL.data},{form.openTime.data},{form.closeTime.data},{form.coffeeRating.data},{form.wifiRating.data},{form.powerRating.data}'
+        print(new_row)
+        with open('cafe-data.csv',mode='a') as file:
+            file.write(new_row)
+            file.write("\n")
             
-    # Exercise:
-    # Make the form write a new row into cafe-data.csv
-    # with   if form.validate_on_submit()
+    
     return render_template('add.html', form=form)
 
 
