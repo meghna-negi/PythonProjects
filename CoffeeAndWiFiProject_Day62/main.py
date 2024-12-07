@@ -12,12 +12,12 @@ bootstrap=Bootstrap5(app)
 
 class CafeForm(FlaskForm):
     cafe = StringField('Cafe name', validators=[DataRequired()])
-    locURL = StringField('Location URL', validators=[URL(message='Invalid URL')])
-    openTime = StringField('Open time')
-    closeTime = StringField('Closing time')
-    coffeeRating = SelectField(u'Coffee rating', choices=[('1','☕'), ('2','☕☕'), ('3','☕☕☕'), ('4','☕☕☕☕'), ('5','☕☕☕☕☕')])
-    wifiRating = SelectField(u'Wifi rating', choices=[('0','✘'),('1','💪'),('2','💪💪'),('3','💪💪💪'),('4','💪💪💪💪'),('5','💪💪💪💪💪')])
-    powerRating = SelectField(u'Power Outlet rating', choices=[('0','✘'),('1','🔌'),('2','🔌🔌'),('3','🔌🔌🔌'),('4','🔌🔌🔌🔌'),('5','🔌🔌🔌🔌🔌')])
+    locURL = StringField('Cafe Location on Google Maps (URL)', validators=[URL(message='Invalid URL')])
+    openTime = StringField('Opening Time e.g. 8AM')
+    closeTime = StringField('Closing Time e.g. 5:30PM')
+    coffeeRating = SelectField(u'Coffee Rating', choices=[('1','☕'), ('2','☕☕'), ('3','☕☕☕'), ('4','☕☕☕☕'), ('5','☕☕☕☕☕')])
+    wifiRating = SelectField(u'Wifi Strength Rating', choices=[('0','✘'),('1','💪'),('2','💪💪'),('3','💪💪💪'),('4','💪💪💪💪'),('5','💪💪💪💪💪')])
+    powerRating = SelectField(u'Power Socket Availability', choices=[('0','✘'),('1','🔌'),('2','🔌🔌'),('3','🔌🔌🔌'),('4','🔌🔌🔌🔌'),('5','🔌🔌🔌🔌🔌')])
     submit = SubmitField('Submit')
 
 # Exercise:
