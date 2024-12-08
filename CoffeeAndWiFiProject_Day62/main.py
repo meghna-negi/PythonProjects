@@ -15,19 +15,10 @@ class CafeForm(FlaskForm):
     locURL = StringField('Cafe Location on Google Maps (URL)', validators=[URL(message='Invalid URL')])
     openTime = StringField('Opening Time e.g. 8AM')
     closeTime = StringField('Closing Time e.g. 5:30PM')
-    coffeeRating = SelectField(u'Coffee Rating', choices=[('1','☕'), ('2','☕☕'), ('3','☕☕☕'), ('4','☕☕☕☕'), ('5','☕☕☕☕☕')])
-    wifiRating = SelectField(u'Wifi Strength Rating', choices=[('0','✘'),('1','💪'),('2','💪💪'),('3','💪💪💪'),('4','💪💪💪💪'),('5','💪💪💪💪💪')])
-    powerRating = SelectField(u'Power Socket Availability', choices=[('0','✘'),('1','🔌'),('2','🔌🔌'),('3','🔌🔌🔌'),('4','🔌🔌🔌🔌'),('5','🔌🔌🔌🔌🔌')])
+    coffeeRating = SelectField(u'Coffee Rating', choices=['☕','☕☕','☕☕☕','☕☕☕☕','☕☕☕☕☕'])
+    wifiRating = SelectField(u'Wifi Strength Rating', choices=['✘','💪','💪💪','💪💪💪','💪💪💪💪','💪💪💪💪💪'])
+    powerRating = SelectField(u'Power Socket Availability', choices=['✘','🔌','🔌🔌','🔌🔌🔌','🔌🔌🔌🔌','🔌🔌🔌🔌🔌'])
     submit = SubmitField('Submit')
-
-# Exercise:
-# add: Location URL, open time, closing time, coffee rating, wifi rating, power outlet rating fields
-# make coffee/wifi/power a select element with choice of 0 to 5.
-#e.g. You could use emojis ☕️/💪/✘/🔌
-# make all fields required except submit
-# use a validator to check that the URL field has a URL entered.
-# ---------------------------------------------------------------------------
-
 
 # all Flask routes below
 @app.route("/")
@@ -41,7 +32,7 @@ def add_cafe():
     if form.validate_on_submit():
         new_row = f'{form.cafe.data},{form.locURL.data},{form.openTime.data},{form.closeTime.data},{form.coffeeRating.data},{form.wifiRating.data},{form.powerRating.data}'
         print(new_row)
-        with open('cafe-data.csv',mode='a') as file:
+        with open('cafe-data.csv',mode='a',encoding='utf-8') as file:
             file.write(new_row)
             file.write("\n")
             
